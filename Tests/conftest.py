@@ -39,21 +39,23 @@ def browser(request):
 def createDirectories():
     ROOT_DIR = Path(__file__).parent.parent
     results_dir = os.path.join(ROOT_DIR,"results")
-    if not os.path.isdir(results_dir):
+    downloads_dir = os.path.join(ROOT_DIR,'downloads')
+    if not os.path.isdir(results_dir) or not os.path.isdir(downloads_dir):
         os.mkdir(results_dir)
+        os.mkdir(downloads_dir)
 
 
 
 @pytest.fixture(scope='class')
 def clear_results():
     ROOT_DIR = Path(__file__).parent.parent
-    Results = os.path.join(ROOT_DIR, 'results').replace('\\', '/')
+    Downloads = os.path.join(ROOT_DIR, 'downloads').replace('\\', '/')
 
-    if os.path.isdir(Results):
-        file_list = os.listdir(Results)
+    if os.path.isdir(Downloads):
+        file_list = os.listdir(Downloads)
         if len(file_list) != "":
             for filename in file_list:
-                item = Results + "/" + filename
+                item = Downloads + "/" + filename
                 if os.path.isfile(item):
                     os.remove(item)
                 elif os.path.isdir(item):

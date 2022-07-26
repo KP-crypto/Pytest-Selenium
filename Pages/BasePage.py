@@ -1,9 +1,11 @@
+import time
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.action_chains import ActionChains
-import time
+from Utilities import xlutils
+
 
 class DomHelper:
 
@@ -262,6 +264,11 @@ class DomHelper:
 
     def wait_for(self,time_in_sec):
         time.sleep(time_in_sec)
+
+    def read_excel(self,file,sheetname,rownum,colnum):
+        xl_value = xlutils.readexel(file,sheetname,rownum,colnum)
+        return xl_value
+
 
 
 

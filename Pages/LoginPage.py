@@ -1,5 +1,8 @@
 from Pages.BasePage import DomHelper
 from Locators.locators import LoginPage
+from pathlib import Path
+import os
+
 
 class Login(DomHelper):
 
@@ -25,6 +28,20 @@ class Login(DomHelper):
     def should_see_text(self,text):
         wepage_html = self.get_webpage_html_as_text()
         return wepage_html
+
+    def verify_file_content(self,col_num,file):
+        ROOT_DIR = Path(__file__).parent.parent
+        Downloads = os.path.join(ROOT_DIR, 'downloads').replace('\\', '/')
+
+        file_list = os.listdir(Downloads)
+        for filename in file_list:
+                if filename == file:
+                     sheetname = 'Sheet1'
+                     col_value = self.read_excel(filename,sheetname,1,col_num)
+                     return col_value
+
+                else:
+                    return False
 
 
 
