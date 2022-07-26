@@ -1,0 +1,7 @@
+pytest
+pytest-html
+pytest-failed-screenshot
+selenium
+webdriver-manager
+
+

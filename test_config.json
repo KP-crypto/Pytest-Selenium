@@ -1,0 +1,6 @@
+{
+  "URL": "${URL}",
+  "USERNAME": "${USER}",
+  "PASSWORD": "${PASSWORD}",
+  "HEADLESS": True
+}
